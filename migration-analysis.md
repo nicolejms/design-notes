@@ -10,14 +10,14 @@ Documents are reorganized into a new directory structure based on the functional
 |------------------|-------------|-----------------|-------|
 | `architecture/` | 3 | 1 | 4 |
 | `security/` | 4 | 1 | 5 |
-| `recipes/` | 10 | 5 | 15 |
+| `recipes/` | 11 | 4 | 15 |
 | `resource-types/` | 1 | 9 | 10 |
 | `extensibility/` | 5 | 5 | 10 |
 | `control-plane/` | 4 | 1 | 5 |
 | `deployment/` | 3 | 0 | 3 |
 | `engineering/` | 5 | 3 | 8 |
 | `templates/` | 3 | 0 | 3 |
-| **Total** | **38** | **25** | **63** |
+| **Total** | **39** | **24** | **63** |
 
 ---
 
@@ -62,6 +62,7 @@ Terraform and Bicep recipe support: module versioning, providers, registries, ga
 | `recipe/2024-02-terraform-providers.md` | Multiple Terraform Providers | `pkg/recipes/terraform/config/providers/` |
 | `recipe/2024-04-terraform-provider-secrets.md` | Terraform Provider Secrets | `pkg/recipes/terraform/config/` |
 | `recipe/2024-06-private-bicep-registries.md` | Private Bicep Registries | `pkg/recipes/` |
+| `architecture/2025-10-terraform-bicep-settings.md` | Terraform & Bicep Settings Lifecycle | `pkg/recipes/` configuration for Terraform/Bicep settings |
 
 ### resource-types/ — Application Resource Types
 
@@ -135,7 +136,6 @@ These design documents describe features that are not yet implemented, are specu
 | Source | Title | Would-be Directory | Reason |
 |--------|-------|-------------------|--------|
 | `architecture/2024-05-radius-on-dapr.md` | Radius on Dapr | `architecture/` | Proposes replacing internal service infrastructure with Dapr. No evidence this was implemented; the service architecture still uses its own patterns. |
-| `architecture/2025-10-terraform-bicep-settings.md` | Terraform & Bicep Settings Lifecycle | `recipes/` | Future feature for externalizing Terraform/Bicep recipe configuration into dedicated settings resources. No corresponding settings resource types exist in `typespec/`. |
 | `recipe/2025-09-container.md` | Container Resource Recipe Migration | `recipes/` | Proposes replacing the imperative Go renderer for containers with a Bicep recipe. Container still uses the Go renderer chain (`pkg/corerp/renderers/container/`). |
 | `features/2024-11-authz-feature-spec.md` | Authorization Feature | `control-plane/` | Granular access control and permissions for multi-tenant environments. No authorization/RBAC code exists in the radius repo. |
 | `features/2025-07-10-offline-install-feature-spec.md` | Offline Installation | `engineering/` | Support for air-gapped environments. No specific offline installation code or mechanisms exist. |
