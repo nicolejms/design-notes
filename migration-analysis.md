@@ -12,12 +12,12 @@ Documents are reorganized into a new directory structure based on the functional
 | `security/` | 4 | 1 | 5 |
 | `recipes/` | 13 | 2 | 15 |
 | `resource-types/` | 1 | 9 | 10 |
-| `extensibility/` | 5 | 5 | 10 |
+| `extensibility/` | 8 | 2 | 10 |
 | `control-plane/` | 4 | 1 | 5 |
 | `deployment/` | 3 | 0 | 3 |
 | `engineering/` | 6 | 2 | 8 |
 | `templates/` | 3 | 0 | 3 |
-| **Total** | **42** | **21** | **63** |
+| **Total** | **45** | **18** | **63** |
 
 ---
 
@@ -85,6 +85,9 @@ User-defined resource types, resource type registration, and compute platform ex
 | `architecture/2024-08-resource-types-registration.md` | Resource Type Registration APIs | `typespec/UCP/resourceproviders.tsp`, `pkg/dynamicrp/api/` |
 | `features/2024-06-resource-extensibility-feature-spec.md` | Resource Extensibility | `pkg/dynamicrp/`, `typespec/UCP/resourceproviders.tsp` |
 | `features/2025-02-user-defined-resource-type-feature-spec.md` | User-Defined Resource Types | `pkg/dynamicrp/`, `typespec/UCP/resourceproviders.tsp` |
+| `architecture/2025-04-aci-support.md` | ACI Integration | `pkg/corerp/renderers/aci/` |
+| `architecture/2025-04-compute-extensibility.md` | Compute Platform Extensibility | `pkg/corerp/renderers/aci/`, `pkg/corerp/renderers/container/` |
+| `features/2025-06-compute-extensibility-feature-spec.md` | Compute Platform Extensibility | `pkg/corerp/renderers/aci/`, `pkg/corerp/renderers/container/` |
 
 ### control-plane/ — Universal Control Plane and Cloud Credentials
 
@@ -155,10 +158,7 @@ These design documents describe features that are not yet implemented, are specu
 | `resources/2024-06-support-secretstores-env.md` | Secret Stores in Environment Variables | `resource-types/` | Related to Applications.Core (`typespec/Applications.Core/secretStores.tsp`) — excluded from migration. |
 | `resources/2025-01-gateway-timeouts.md` | Gateway Timeouts | `resource-types/` | Related to Applications.Core (`typespec/Applications.Core/gateways.tsp`) — excluded from migration. |
 | `features/2024-07-secretstore-feature-spec.md` | Secret Stores Extension | `resource-types/` | Related to Applications.Core (`typespec/Applications.Core/secretStores.tsp`) — excluded from migration. |
-| `architecture/2025-04-aci-support.md` | ACI Integration | `extensibility/` | Related to Applications.Core (`pkg/corerp/renderers/aci/`) — excluded from migration. |
-| `architecture/2025-04-compute-extensibility.md` | Compute Platform Extensibility | `extensibility/` | Related to Applications.Core (`pkg/corerp/renderers/aci/`, `pkg/corerp/renderers/container/`) — excluded from migration. |
 | `features/2025-01-serverless-feature-spec.md` | Serverless Container Platforms | `extensibility/` | Related to Applications.Core (`pkg/corerp/renderers/aci/`) — excluded from migration. |
-| `features/2025-06-compute-extensibility-feature-spec.md` | Compute Platform Extensibility | `extensibility/` | Related to Applications.Core (`pkg/corerp/renderers/aci/`, `pkg/corerp/renderers/container/`) — excluded from migration. |
 
 ---
 
