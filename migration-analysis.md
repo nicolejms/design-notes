@@ -9,15 +9,15 @@ Documents are reorganized into a new directory structure based on the functional
 | Target Directory | Recommended | Not Recommended | Total |
 |------------------|-------------|-----------------|-------|
 | `architecture/` | 3 | 1 | 4 |
-| `security/` | 5 | 0 | 5 |
-| `recipes/` | 12 | 3 | 15 |
-| `resource-types/` | 9 | 1 | 10 |
-| `extensibility/` | 9 | 1 | 10 |
+| `security/` | 4 | 1 | 5 |
+| `recipes/` | 10 | 5 | 15 |
+| `resource-types/` | 1 | 9 | 10 |
+| `extensibility/` | 5 | 5 | 10 |
 | `control-plane/` | 4 | 1 | 5 |
 | `deployment/` | 3 | 0 | 3 |
 | `engineering/` | 5 | 3 | 8 |
 | `templates/` | 3 | 0 | 3 |
-| **Total** | **53** | **10** | **63** |
+| **Total** | **38** | **25** | **63** |
 
 ---
 
@@ -41,7 +41,6 @@ Component threat models and sensitive data handling.
 
 | Source | Title | Corresponding Code in `radius` |
 |--------|-------|-------------------------------|
-| `architecture/2024-08-applications-rp-component-threat-model.md` | Applications RP Threat Model | `pkg/corerp/`, `cmd/applications-rp/` |
 | `architecture/2024-08-controller-component-threat-model.md` | Controller Component Threat Model | `pkg/controller/`, `cmd/controller/` |
 | `architecture/2024-08-dashboard-component-threat-model.md` | Dashboard Component Threat Model | Radius Dashboard component (part of overall Radius security posture) |
 | `architecture/2024-11-ucp-component-threat-model.md` | UCP Component Threat Model | `pkg/ucp/`, `cmd/ucpd/` |
@@ -59,28 +58,18 @@ Terraform and Bicep recipe support: module versioning, providers, registries, ga
 | `recipe/2023-09-populate-terraform-resourcs-ids.md` | Populate Terraform Resource IDs | `pkg/recipes/terraform/` |
 | `recipe/2023-11-validate-template-path.md` | Validate Template Paths | `pkg/recipes/terraform/module.go` |
 | `recipe/2023-11-support-insecure-registries.md` | Support Insecure Registries | `pkg/recipes/` configuration handling |
-| `recipe/2024-01-global-scope-secret-store.md` | Global Scope Secret Store | `pkg/corerp/frontend/controller/secretstores/` |
 | `recipe/2024-01-support-private-terraform-repository.md` | Private Terraform Repository Support | `pkg/recipes/terraform/` |
 | `recipe/2024-02-terraform-providers.md` | Multiple Terraform Providers | `pkg/recipes/terraform/config/providers/` |
 | `recipe/2024-04-terraform-provider-secrets.md` | Terraform Provider Secrets | `pkg/recipes/terraform/config/` |
 | `recipe/2024-06-private-bicep-registries.md` | Private Bicep Registries | `pkg/recipes/` |
-| `recipe/2025-08-recipe-packs.md` | Recipe Packs | `pkg/corerp/frontend/controller/recipepacks/` |
 
 ### resource-types/ — Application Resource Types
 
-Designs for core application resource types: gateways, containers, secret stores, Dapr bindings, and environments.
+Designs for application resource types not part of Applications.Core.
 
 | Source | Title | Corresponding Code in `radius` |
 |--------|-------|-------------------------------|
-| `resources/2023-04-tls-termination.md` | TLS Termination | `typespec/Applications.Core/gateways.tsp`, `pkg/corerp/renderers/gateway/` |
-| `resources/2023-07-fail-deployments.md` | Classify Deployment Failures | `pkg/corerp/backend/` |
-| `resources/2023-10-app-graph.md` | Application Graph API | `pkg/corerp/frontend/controller/applications/` |
-| `resources/2023-10-recipe-details.md` | Recipe Information in Resources | `pkg/corerp/datamodel/` |
-| `resources/2023-10-simulated-environment.md` | Simulated Environment | `typespec/Applications.Core/environments.tsp` |
-| `resources/2024-06-support-secretstores-env.md` | Secret Stores in Environment Variables | `typespec/Applications.Core/secretStores.tsp`, `pkg/corerp/frontend/controller/secretstores/` |
 | `resources/2024-10-dapr-bindings.md` | Dapr Binding Implementation | `pkg/daprrp/` (Note: Dapr Bindings not yet in typespec; `pkg/daprrp/` handles Dapr resource types) |
-| `resources/2025-01-gateway-timeouts.md` | Gateway Timeouts | `typespec/Applications.Core/gateways.tsp`, `pkg/corerp/renderers/gateway/` |
-| `features/2024-07-secretstore-feature-spec.md` | Secret Stores Extension | `typespec/Applications.Core/secretStores.tsp`, `pkg/corerp/frontend/controller/secretstores/` |
 
 ### extensibility/ — User-Defined Types and Compute Extensibility
 
@@ -91,12 +80,8 @@ User-defined resource types, resource type registration, and compute platform ex
 | `architecture/2024-07-user-defined-types.md` | User-Defined Types | `pkg/dynamicrp/`, `cmd/dynamic-rp/`, `typespec/UCP/resourceproviders.tsp` |
 | `architecture/2024-07-user-defned-types-schema-design.md` | User-Defined Types Schema Validation | `pkg/dynamicrp/`, `pkg/schema/` |
 | `architecture/2024-08-resource-types-registration.md` | Resource Type Registration APIs | `typespec/UCP/resourceproviders.tsp`, `pkg/dynamicrp/api/` |
-| `architecture/2025-04-aci-support.md` | ACI Integration | `pkg/corerp/renderers/aci/` |
-| `architecture/2025-04-compute-extensibility.md` | Compute Platform Extensibility | `pkg/corerp/renderers/aci/`, `pkg/corerp/renderers/container/` |
 | `features/2024-06-resource-extensibility-feature-spec.md` | Resource Extensibility | `pkg/dynamicrp/`, `typespec/UCP/resourceproviders.tsp` |
-| `features/2025-01-serverless-feature-spec.md` | Serverless Container Platforms | `pkg/corerp/renderers/aci/` |
 | `features/2025-02-user-defined-resource-type-feature-spec.md` | User-Defined Resource Types | `pkg/dynamicrp/`, `typespec/UCP/resourceproviders.tsp` |
-| `features/2025-06-compute-extensibility-feature-spec.md` | Compute Platform Extensibility | `pkg/corerp/renderers/aci/`, `pkg/corerp/renderers/container/` |
 
 ### control-plane/ — Universal Control Plane and Cloud Credentials
 
@@ -159,6 +144,21 @@ These design documents describe features that are not yet implemented, are specu
 | `features/2025-08-14-terraform-bicep-settings.md` | Terraform & Bicep Settings | `recipes/` | Feature spec for externalizing settings (same future feature as architecture doc above). No corresponding settings resources in `typespec/`. |
 | `features/2025-08-29-container-resource-type.md` | Container Resource Type | `extensibility/` | Redesigned container resource type as part of compute extensibility. Represents future schema redesign, not current implementation. |
 | `features/2025-09-02-routes-resource-type.md` | Routes Resource Type | `resource-types/` | New routes resource type replacing legacy gateways. No `routes.tsp` or routes implementation exists; `gateways.tsp` remains the current implementation. |
+| `architecture/2024-08-applications-rp-component-threat-model.md` | Applications RP Threat Model | `security/` | Related to Applications.Core (`pkg/corerp/`, `cmd/applications-rp/`) — excluded from migration. |
+| `recipe/2024-01-global-scope-secret-store.md` | Global Scope Secret Store | `recipes/` | Related to Applications.Core (`pkg/corerp/frontend/controller/secretstores/`) — excluded from migration. |
+| `recipe/2025-08-recipe-packs.md` | Recipe Packs | `recipes/` | Related to Applications.Core (`pkg/corerp/frontend/controller/recipepacks/`) — excluded from migration. |
+| `resources/2023-04-tls-termination.md` | TLS Termination | `resource-types/` | Related to Applications.Core (`typespec/Applications.Core/gateways.tsp`, `pkg/corerp/renderers/gateway/`) — excluded from migration. |
+| `resources/2023-07-fail-deployments.md` | Classify Deployment Failures | `resource-types/` | Related to Applications.Core (`pkg/corerp/backend/`) — excluded from migration. |
+| `resources/2023-10-app-graph.md` | Application Graph API | `resource-types/` | Related to Applications.Core (`pkg/corerp/frontend/controller/applications/`) — excluded from migration. |
+| `resources/2023-10-recipe-details.md` | Recipe Information in Resources | `resource-types/` | Related to Applications.Core (`pkg/corerp/datamodel/`) — excluded from migration. |
+| `resources/2023-10-simulated-environment.md` | Simulated Environment | `resource-types/` | Related to Applications.Core (`typespec/Applications.Core/environments.tsp`) — excluded from migration. |
+| `resources/2024-06-support-secretstores-env.md` | Secret Stores in Environment Variables | `resource-types/` | Related to Applications.Core (`typespec/Applications.Core/secretStores.tsp`) — excluded from migration. |
+| `resources/2025-01-gateway-timeouts.md` | Gateway Timeouts | `resource-types/` | Related to Applications.Core (`typespec/Applications.Core/gateways.tsp`) — excluded from migration. |
+| `features/2024-07-secretstore-feature-spec.md` | Secret Stores Extension | `resource-types/` | Related to Applications.Core (`typespec/Applications.Core/secretStores.tsp`) — excluded from migration. |
+| `architecture/2025-04-aci-support.md` | ACI Integration | `extensibility/` | Related to Applications.Core (`pkg/corerp/renderers/aci/`) — excluded from migration. |
+| `architecture/2025-04-compute-extensibility.md` | Compute Platform Extensibility | `extensibility/` | Related to Applications.Core (`pkg/corerp/renderers/aci/`, `pkg/corerp/renderers/container/`) — excluded from migration. |
+| `features/2025-01-serverless-feature-spec.md` | Serverless Container Platforms | `extensibility/` | Related to Applications.Core (`pkg/corerp/renderers/aci/`) — excluded from migration. |
+| `features/2025-06-compute-extensibility-feature-spec.md` | Compute Platform Extensibility | `extensibility/` | Related to Applications.Core (`pkg/corerp/renderers/aci/`, `pkg/corerp/renderers/container/`) — excluded from migration. |
 
 ---
 
@@ -186,7 +186,7 @@ This structure groups documents by the functional area of the Radius system they
 - **architecture/** maps to the overall service structure (`cmd/`, `pkg/corerp/`, `pkg/ucp/`)
 - **security/** maps to threat models for each component plus data protection (`pkg/crypto/`)
 - **recipes/** maps to `pkg/recipes/` (Terraform and Bicep recipe engine)
-- **resource-types/** maps to `typespec/Applications.*` and `pkg/corerp/renderers/`, `pkg/daprrp/`
+- **resource-types/** maps to `pkg/daprrp/` (non-Applications.Core resource types)
 - **extensibility/** maps to `pkg/dynamicrp/`, `typespec/UCP/resourceproviders.tsp`
 - **control-plane/** maps to `pkg/ucp/`, `typespec/UCP/`
 - **deployment/** maps to `pkg/controller/reconciler/`
