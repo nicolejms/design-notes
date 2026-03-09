@@ -10,14 +10,14 @@ Documents are reorganized into a new directory structure based on the functional
 |------------------|-------------|-----------------|-------|
 | `architecture/` | 3 | 1 | 4 |
 | `security/` | 4 | 1 | 5 |
-| `recipes/` | 11 | 4 | 15 |
+| `recipes/` | 13 | 2 | 15 |
 | `resource-types/` | 1 | 9 | 10 |
 | `extensibility/` | 5 | 5 | 10 |
 | `control-plane/` | 4 | 1 | 5 |
 | `deployment/` | 3 | 0 | 3 |
-| `engineering/` | 5 | 3 | 8 |
+| `engineering/` | 6 | 2 | 8 |
 | `templates/` | 3 | 0 | 3 |
-| **Total** | **39** | **24** | **63** |
+| **Total** | **42** | **21** | **63** |
 
 ---
 
@@ -63,6 +63,8 @@ Terraform and Bicep recipe support: module versioning, providers, registries, ga
 | `recipe/2024-04-terraform-provider-secrets.md` | Terraform Provider Secrets | `pkg/recipes/terraform/config/` |
 | `recipe/2024-06-private-bicep-registries.md` | Private Bicep Registries | `pkg/recipes/` |
 | `architecture/2025-10-terraform-bicep-settings.md` | Terraform & Bicep Settings Lifecycle | `pkg/recipes/` configuration for Terraform/Bicep settings |
+| `features/2025-08-14-terraform-bicep-settings.md` | Terraform & Bicep Settings | `pkg/recipes/` configuration for Terraform/Bicep settings |
+| `recipe/2025-08-recipe-packs.md` | Recipe Packs | `pkg/recipes/` recipe pack management |
 
 ### resource-types/ — Application Resource Types
 
@@ -116,6 +118,7 @@ Test strategy, CI/CD workflows, API design standards, and build system improveme
 | `guide/api-design-guidelines.md` | Radius API Guidelines | `typespec/`, `pkg/armrpc/` |
 | `specs/001-lrt-current-release/` | Long-Running Tests Feature Spec | `test/` infrastructure |
 | `specs/001-remove-bicep-types-submodule/` | Remove Bicep Types Submodule | Build system, `go.mod` |
+| `features/2025-07-10-offline-install-feature-spec.md` | Offline Installation | Installation tooling, `cmd/rad/` |
 
 ### templates/ — Design Document Templates
 
@@ -138,15 +141,12 @@ These design documents describe features that are not yet implemented, are specu
 | `architecture/2024-05-radius-on-dapr.md` | Radius on Dapr | `architecture/` | Proposes replacing internal service infrastructure with Dapr. No evidence this was implemented; the service architecture still uses its own patterns. |
 | `recipe/2025-09-container.md` | Container Resource Recipe Migration | `recipes/` | Proposes replacing the imperative Go renderer for containers with a Bicep recipe. Container still uses the Go renderer chain (`pkg/corerp/renderers/container/`). |
 | `features/2024-11-authz-feature-spec.md` | Authorization Feature | `control-plane/` | Granular access control and permissions for multi-tenant environments. No authorization/RBAC code exists in the radius repo. |
-| `features/2025-07-10-offline-install-feature-spec.md` | Offline Installation | `engineering/` | Support for air-gapped environments. No specific offline installation code or mechanisms exist. |
 | `features/2025-07-23-radius-configuration-ux.md` | Configuration UX | `engineering/` | User experience design recommendations for control plane configuration. UX guidance document without direct code implementation. |
 | `features/2025-07-radius-resource-types-contribution.md` | Contributing Resource Types | `engineering/` | Community contribution process and pathways document. Not a code feature specification. |
-| `features/2025-08-14-terraform-bicep-settings.md` | Terraform & Bicep Settings | `recipes/` | Feature spec for externalizing settings (same future feature as architecture doc above). No corresponding settings resources in `typespec/`. |
 | `features/2025-08-29-container-resource-type.md` | Container Resource Type | `extensibility/` | Redesigned container resource type as part of compute extensibility. Represents future schema redesign, not current implementation. |
 | `features/2025-09-02-routes-resource-type.md` | Routes Resource Type | `resource-types/` | New routes resource type replacing legacy gateways. No `routes.tsp` or routes implementation exists; `gateways.tsp` remains the current implementation. |
 | `architecture/2024-08-applications-rp-component-threat-model.md` | Applications RP Threat Model | `security/` | Related to Applications.Core (`pkg/corerp/`, `cmd/applications-rp/`) — excluded from migration. |
 | `recipe/2024-01-global-scope-secret-store.md` | Global Scope Secret Store | `recipes/` | Related to Applications.Core (`pkg/corerp/frontend/controller/secretstores/`) — excluded from migration. |
-| `recipe/2025-08-recipe-packs.md` | Recipe Packs | `recipes/` | Related to Applications.Core (`pkg/corerp/frontend/controller/recipepacks/`) — excluded from migration. |
 | `resources/2023-04-tls-termination.md` | TLS Termination | `resource-types/` | Related to Applications.Core (`typespec/Applications.Core/gateways.tsp`, `pkg/corerp/renderers/gateway/`) — excluded from migration. |
 | `resources/2023-07-fail-deployments.md` | Classify Deployment Failures | `resource-types/` | Related to Applications.Core (`pkg/corerp/backend/`) — excluded from migration. |
 | `resources/2023-10-app-graph.md` | Application Graph API | `resource-types/` | Related to Applications.Core (`pkg/corerp/frontend/controller/applications/`) — excluded from migration. |
